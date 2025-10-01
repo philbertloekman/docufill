@@ -1,0 +1,108 @@
+Relinquished Escrow Company
+relinquished_escrow_company
+Single
+
+Relinquished Escrow Street
+relinquished_escrow_street
+Single
+
+Relinquished Escrow City
+relinquished_escrow_city
+Single
+
+Relinquished Escrow Officer
+relinquished_escrow_officer
+Single
+
+Relinquished Escrow Officer Email
+relinquished_escrow_officer_email
+Single
+
+Relinquished Escrow Phone 
+relinquished_escrow_phone
+Single
+
+Relinquished Escrow Fax
+relinquished_escrow_fax
+Single
+
+Date of Opening Exchange
+date_of_opening_exchange
+Single
+
+Relinquished Escrow Number
+r_escrow_number
+Single
+
+Relinquished Escrow Officer Address
+r_escrow_officer_address
+Single
+
+Exchange File Number
+exchange_file_number
+Single
+
+Full Taxpayer Name
+full_taxpayer_name
+Single
+
+Entity
+entity
+Single
+
+Attn
+attn
+Single
+
+Taxpayer Name
+taxpayer_name
+Single
+
+Title of Taxpayer
+title
+Single
+
+Relinquished Property City
+relinquished_property_city
+Single
+
+Relinquished Property Country
+relinquished_property_county
+Single
+
+Relinquished Property Street
+relinquished_property_street
+Single
+
+Relinquished Property City, State, and ZIP
+relinquished_property_city_state_zip
+Single
+
+Taxpayer Address
+taxpayer_address
+Single
+
+Vesting of Taxpayer
+vesting
+Single
+
+APN
+apn
+Single
+
+Relinquished Consideration Price
+consideration_price
+Single
+
+Relinquished Estimated COE
+ecoe
+Single
+
+Relinquished Property Buyer Names
+relinquished_buyer_names
+Single
+
+Relinquished Property Buyer Entity
+relinquished_buyer_entity
+Single
+
