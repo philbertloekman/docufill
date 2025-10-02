@@ -11,6 +11,7 @@ A beautiful desktop application for filling Word document templates with data fr
 ✅ **Validation** - Automatic validation of templates before use  
 💾 **Timestamped Output** - Automatically organized output files  
 🎯 **User-Friendly** - Tooltips and notes for every field  
+🔄 **Refresh Templates** - Reload templates and Excel files on demand  
 
 ## Installation
 
@@ -119,7 +120,15 @@ When you fill out the form, the placeholders will be replaced with the actual va
 4. Click "Fill Documents"
 5. Your filled documents will be saved in the `output/` folder with timestamps
 
-### 3. Access Output Files
+### 3. Refresh Templates
+
+If you add, remove, or modify template folders or Excel files:
+1. Click the "🔄 Refresh Templates" button in the Fill Templates tab
+2. The application will re-scan all template folders and Excel configurations
+3. You'll see a success message when the refresh is complete
+4. New or updated templates will appear in the template list
+
+### 4. Access Output Files
 
 - Click "Browse Folders" → "Open Output Folder" in the app
 - Or navigate to the `output/` folder manually
@@ -245,6 +254,7 @@ The backend API exposed to the frontend:
 - `validate_template(template_name)` - Validate a template's configuration
 - `get_template_fields(template_name)` - Get fields for a template
 - `fill_documents(template_name, form_data)` - Fill documents with data
+- `refresh_templates()` - Reload templates and Excel configurations
 - `open_folder(folder_type)` - Open templates or output folder
 
 ### ExcelConfigReader Class
