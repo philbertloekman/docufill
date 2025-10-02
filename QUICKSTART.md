@@ -47,6 +47,11 @@ The application opens with a modern desktop interface showing your available tem
    - You'll see a success message with file names
    - Files are named: `YYYYMMDD_HHMMSS_OriginalName.docx`
 
+5. **Refresh Templates** (when needed)
+   - Click "🔄 Refresh Templates" button to reload templates
+   - Use this when you add, remove, or modify template folders
+   - The app will re-scan all Excel configurations
+
 #### **Browse Folders Tab**
 
 - **Templates Folder** - View and edit your templates
@@ -146,6 +151,7 @@ python test/cli_excel_reader.py --template "My First Template" --verbose
 ### Template doesn't appear
 - Check that `config.xlsx` exists
 - Verify Excel has `label` and `key` columns
+- Click "🔄 Refresh Templates" to reload templates
 - Run validation: `python test/cli_excel_reader.py --template "YourTemplate"`
 
 ### Placeholders not replaced
