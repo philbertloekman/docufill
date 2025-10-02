@@ -11,7 +11,7 @@ fi
 source venv/bin/activate
 
 # Check if dependencies are installed
-if ! python -c "import pandas, openpyxl, docx, webview" 2>/dev/null; then
+if ! python -c "import pandas, openpyxl, docx, webview, docxtpl, jinja2" 2>/dev/null; then
     echo "Installing dependencies..."
     pip install -r requirements.txt
 fi

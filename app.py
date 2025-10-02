@@ -21,9 +21,19 @@ class DocuFillAPI:
     """API for DocuFill application"""
     
     def __init__(self):
-        self.base_dir = str(Path(__file__).parent)
-        self.templates_dir = str(Path(__file__).parent / 'template')
-        self.output_dir = str(Path(__file__).parent / 'output')
+        # Resolve base, template, and output directories for both dev and packaged app
+        if getattr(sys, 'frozen', False) and sys.platform == 'darwin':
+            # When packaged as a .app, place template/ and output/ next to the .app bundle
+            # sys.executable → .../Dist/DocuFill.app/Contents/MacOS/DocuFill
+            dist_root = Path(sys.executable).parents[3]
+            self.base_dir = str(dist_root)
+            self.templates_dir = str(dist_root / 'template')
+            self.output_dir = str(dist_root / 'output')
+        else:
+            base = Path(__file__).parent
+            self.base_dir = str(base)
+            self.templates_dir = str(base / 'template')
+            self.output_dir = str(base / 'output')
         
         # Create directories if they don't exist
         Path(self.templates_dir).mkdir(exist_ok=True)
@@ -453,8 +463,18 @@ def main():
     # Create API instance
     api = DocuFillAPI()
     
-    # Get the path to the HTML file
-    html_file = Path(__file__).parent / 'src' / 'ui' / 'index.html'
+    # Get the path to the HTML file (supports frozen bundle)
+    if getattr(sys, 'frozen', False):
+        if sys.platform == 'darwin':
+            # In macOS .app: Contents/Resources is where data files live
+            resources_dir = Path(sys.executable).parents[1] / 'Resources'
+            ui_base = resources_dir / 'ui'
+        else:
+            # Fallback for other platforms
+            ui_base = Path(getattr(sys, '_MEIPASS', Path(__file__).parent)) / 'ui'
+        html_file = ui_base / 'index.html'
+    else:
+        html_file = Path(__file__).parent / 'src' / 'ui' / 'index.html'
     
     # Create webview window
     window = webview.create_window(
@@ -466,8 +486,9 @@ def main():
         js_api=api
     )
     
-    # Start the application
-    webview.start(debug=True)
+    # Start the application (disable inspector in packaged builds)
+    is_frozen = getattr(sys, 'frozen', False)
+    webview.start(debug=not is_frozen)
 
 
 if __name__ == '__main__':
