@@ -73,6 +73,34 @@ class DocuFillAPI:
         
         return templates
     
+    def refresh_templates(self):
+        """
+        Refresh templates by re-reading the template directory and Excel files
+        This forces a fresh scan of all template folders and their configurations
+        """
+        try:
+            # Force a fresh scan by re-reading the templates directory
+            # This will pick up any new template folders or changes to existing ones
+            templates = self.get_templates()
+            
+            # Log the refresh action
+            print(f"Templates refreshed: Found {len(templates)} template(s)")
+            for template in templates:
+                print(f"  - {template['name']}: {template['file_count']} document(s)")
+            
+            return {
+                'success': True,
+                'message': f'Successfully refreshed {len(templates)} template(s)',
+                'template_count': len(templates)
+            }
+        
+        except Exception as e:
+            print(f"Error refreshing templates: {e}")
+            return {
+                'success': False,
+                'message': f'Error refreshing templates: {str(e)}'
+            }
+    
     def validate_template(self, template_name):
         """
         Validate a template's configuration and documents

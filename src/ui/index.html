@@ -810,6 +810,12 @@
                 <!-- Template Selection -->
                 <div id="template-selection">
                     <div class="card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <h3 style="margin: 0; font-size: 18px; font-weight: 600; color: #212529;">Available Templates</h3>
+                            <button class="btn btn-outline" onclick="refreshTemplates()" id="refresh-btn">
+                                <span>🔄</span> Refresh Templates
+                            </button>
+                        </div>
                         <div id="templates-loading" class="loading" style="display: none;">
                             <div class="spinner"></div>
                             <span>Loading templates...</span>
@@ -961,6 +967,35 @@
             } else if (pageId === 'folders') {
                 loadBrowseTemplates();
                 loadOutputFolders();
+            }
+        }
+
+        // Refresh templates and reload from disk
+        async function refreshTemplates() {
+            const refreshBtn = document.getElementById('refresh-btn');
+            const originalText = refreshBtn.innerHTML;
+            
+            // Show loading state on button
+            refreshBtn.disabled = true;
+            refreshBtn.innerHTML = '<span>⏳</span> Refreshing...';
+            
+            try {
+                // Call backend to refresh templates
+                await pywebview.api.refresh_templates();
+                
+                // Reload templates
+                await loadTemplates();
+                
+                // Show success message
+                showAlert('Templates refreshed successfully!', 'success');
+                
+            } catch (error) {
+                console.error('Error refreshing templates:', error);
+                showAlert('Error refreshing templates: ' + error, 'error');
+            } finally {
+                // Restore button state
+                refreshBtn.disabled = false;
+                refreshBtn.innerHTML = originalText;
             }
         }
 
