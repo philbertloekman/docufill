@@ -868,11 +868,31 @@
                 
                 <div style="margin-bottom: 24px;">
                     <h2 style="font-size: 20px; font-weight: 600; color: #212529; margin-bottom: 16px;">Templates</h2>
-                    <div id="browse-templates-loading" class="loading" style="display: none;">
-                        <div class="spinner"></div>
-                        <span>Loading templates...</span>
+                    <div class="card">
+                        <!-- Header Section -->
+                        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #e9ecef;">
+                            <div class="folder-icon" style="background: linear-gradient(135deg, #228be6 0%, #1971c2 100%); width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px;">📁</div>
+                            <div style="flex: 1;">
+                                <h3 style="margin: 0 0 4px 0; font-size: 18px; font-weight: 600; color: #212529;">Templates Folder</h3>
+                                <p style="margin: 0; color: #6c757d; font-size: 14px;">
+                                    View and edit your template packages and configurations
+                                </p>
+                            </div>
+                            <button class="btn btn-outline" onclick="openFolder('templates')">
+                                Open Folder
+                            </button>
+                        </div>
+                        
+                        <!-- Template Packages Section -->
+                        <div>
+                            <h4 style="margin: 0 0 16px 0; font-size: 16px; font-weight: 600; color: #212529;">Template Packages</h4>
+                            <div id="browse-templates-loading" class="loading" style="display: none;">
+                                <div class="spinner"></div>
+                                <span>Loading templates...</span>
+                            </div>
+                            <div id="browse-templates-list" class="template-grid"></div>
+                        </div>
                     </div>
-                    <div id="browse-templates-list" class="template-grid"></div>
                 </div>
                 
                 <div>
