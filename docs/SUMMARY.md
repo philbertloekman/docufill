@@ -34,6 +34,7 @@ A complete desktop application for filling Word document templates with a modern
   - `validate_template()` - Check template configuration
   - `get_template_fields()` - Get fields for form generation
   - `fill_documents()` - Process and fill documents
+  - `refresh_templates()` - Reload templates and Excel configurations
   - `open_folder()` - Open templates/output folders
 
 ### 🛠️ Development Tools
@@ -231,6 +232,7 @@ You now have a fully functional document template filler application with:
 - ✅ Multiple value support
 - ✅ Comprehensive validation
 - ✅ Error handling
+- ✅ Template refresh functionality
 - ✅ Documentation
 - ✅ Testing tools
 

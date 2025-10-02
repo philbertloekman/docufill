@@ -30,6 +30,12 @@ DocuFill is a desktop application that automates the process of filling Word doc
 - **Field Notes**: Helpful tooltips and instructions
 - **Label Display**: User-friendly field names
 
+### 🔄 Template Management
+- **Refresh Templates**: Reload templates and Excel configurations on demand
+- **Real-time Updates**: Add, remove, or modify templates without restarting
+- **Validation**: Automatic validation of template configurations
+- **Error Handling**: Clear feedback for template issues
+
 ## 📁 Complete File Structure
 
 ```
@@ -250,6 +256,7 @@ This project demonstrates:
 ## 🔮 Future Enhancements
 
 ### Potential Features
+- [x] Template refresh functionality ✅
 - [ ] PDF generation support
 - [ ] Database storage for common values
 - [ ] Template import/export

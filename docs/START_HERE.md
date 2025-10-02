@@ -67,6 +67,9 @@ Open the app and click on any template card with a green ✓ badge.
 ### 3. Generate Documents
 Click "Fill Documents" and find your files in `output/` folder!
 
+### 4. Refresh Templates (when needed)
+Click "🔄 Refresh Templates" to reload templates after adding or modifying template folders.
+
 ## 🛠️ Creating Your Own Template
 
 ```bash
@@ -112,13 +115,9 @@ python test/test_excel_reader.py
 ## ❓ Common Issues
 
 ### Template not appearing?
-```bash
-# Check setup
-python test/check_setup.py
-
-# Verify template
-python test/cli_excel_reader.py --template "Template Name"
-```
+- Click "🔄 Refresh Templates" in the app
+- Check setup: `python test/check_setup.py`
+- Verify template: `python test/cli_excel_reader.py --template "Template Name"`
 
 ### App won't start?
 ```bash
@@ -155,6 +154,7 @@ pip install -r requirements.txt
 - ✅ Automatic validation
 - ✅ Timestamped output
 - ✅ Error handling
+- ✅ Template refresh functionality
 
 ## 🎉 You're Ready!
 

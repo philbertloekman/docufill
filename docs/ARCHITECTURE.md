@@ -68,6 +68,7 @@ DocuFillAPI
 ├── validate_template()     # Validate configuration
 ├── get_template_fields()   # Get form fields
 ├── fill_documents()        # Process documents
+├── refresh_templates()     # Reload templates and Excel configs
 └── open_folder()          # Open file explorer
 ```
 
@@ -282,6 +283,17 @@ docufill/
   "message": "Successfully filled 2 documents",
   "files": ["20251001_153045_Doc1.docx"],
   "errors": []
+}
+```
+
+### `refresh_templates() → Dict`
+
+**Returns:**
+```json
+{
+  "success": true,
+  "message": "Successfully refreshed 3 template(s)",
+  "template_count": 3
 }
 ```
 
