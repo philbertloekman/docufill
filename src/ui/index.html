@@ -789,10 +789,10 @@
                 </h2>
             </div>
             <nav class="sidebar-nav">
-                <button class="sidebar-item active" onclick="showPage('fill')">
+                <button class="sidebar-item active" onclick="showPage('fill', this)">
                     <span>📝</span> Fill Templates
                 </button>
-                <button class="sidebar-item" onclick="showPage('folders')">
+                <button class="sidebar-item" onclick="showPage('folders', this)">
                     <span>📁</span> Browse Folders
                 </button>
             </nav>
@@ -926,7 +926,7 @@
         let templateFields = [];
 
         // Navigation
-        function showPage(pageId) {
+        function showPage(pageId, clickedElement = null) {
             // Hide all pages
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
@@ -941,10 +941,22 @@
             document.getElementById(pageId + '-page').classList.add('active');
             
             // Highlight selected sidebar item
-            event.target.classList.add('active');
+            if (clickedElement) {
+                clickedElement.classList.add('active');
+            } else {
+                // Fallback: find the sidebar item by pageId
+                const sidebarItems = document.querySelectorAll('.sidebar-item');
+                sidebarItems.forEach(item => {
+                    if (item.onclick && item.onclick.toString().includes(`'${pageId}'`)) {
+                        item.classList.add('active');
+                    }
+                });
+            }
             
             // Load templates when showing fill page or folders page
             if (pageId === 'fill') {
+                // Always go back to template selection (home page) when clicking Fill Templates
+                backToSelection();
                 loadTemplates();
             } else if (pageId === 'folders') {
                 loadBrowseTemplates();
@@ -1203,7 +1215,7 @@
             document.getElementById('template-selection').style.display = 'none';
             document.getElementById('form-section').style.display = 'block';
             document.getElementById('form-title').textContent = currentTemplate.name;
-            document.getElementById('form-subtitle').textContent = `${templateFields.length} fields • ${currentTemplate.file_count} documents`;
+            document.getElementById('form-subtitle').textContent = '';
             
             // Show and populate the main form title section
             const titleSection = document.getElementById('form-title-section');
@@ -1212,7 +1224,7 @@
             
             titleSection.style.display = 'block';
             mainTitle.textContent = currentTemplate.name;
-            mainSubtitle.textContent = '';
+            mainSubtitle.textContent = `${templateFields.length} fields • ${currentTemplate.file_count} documents`;
             
             const formFields = document.getElementById('form-fields');
             formFields.innerHTML = '';
